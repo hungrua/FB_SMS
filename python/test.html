@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <a href="http://192.168.1.100:5500/index.html" target="_blank"></a>
+    <div class="container">
+        <form id="form-upload" enctype="multipart/form-data">
+            <input type="file" id="file_input" name="file">
+            <input type="text" name="name" id="name">
+            <button type="submit">Upload</button>
+        </form>
+        <div class="text">
+            
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#form-upload").submit(function(e) {
+                e.preventDefault();
+                var formData = new FormData();
+                formData.append('file', $("#file_input")[0].files[0]);
+                formData.append('name', $("#name").val())
+                console.log($("#file_input")[0].files[0])
+                // $.ajax({
+                //     url: "http://localhost:8081/api/file", 
+                //     type: "POST",
+                //     data: formData,
+                //     contentType: false,
+                //     processData: false,
+                //     success: function(response) {
+                //         alert("File uploaded successfully.");
+                //     },
+                //     error: function(xhr, status, message) {
+                //        alert("Error uploading file.");
+                //     }
+                // });
+            });
+            // $.get("http://localhost:8081/api/progress_current", (data, status) => {
+            //     $(".text").html(`
+            //         <h1>${data.message} : ${data.current_phoneNumber}</h1>
+            //     `)
+            // })
+        });
+    </script>
+</body>
+</html>
